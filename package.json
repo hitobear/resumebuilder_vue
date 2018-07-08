@@ -1,0 +1,23 @@
+{
+  "name": "resumebuilder_vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hitobear/resumebuilder_vue.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hitobear/resumebuilder_vue/issues"
+  },
+  "homepage": "https://github.com/hitobear/resumebuilder_vue#readme",
+  "dependencies": {
+    "leancloud-storage": "^3.7.3"
+  }
+}
