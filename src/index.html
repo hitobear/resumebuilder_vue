@@ -12,7 +12,7 @@
         <aside class="resume-operation-aside">
             <div class="btn-upper">
                 <ul>
-                    <li class="btn-item"><button class="btn">保存</button></li>
+                    <li class="btn-item"><button class="btn" @click="onClickSave">保存</button></li>
                     <li class="btn-item"><button class="btn">分享</button></li>
                     <li class="btn-item"><button class="btn">打印</button></li>
                     <li class="btn-item"><button class="btn">换肤</button></li>
@@ -26,9 +26,9 @@
         <main class="resume-editor-container">
             <div class="resume">
                 <section class="res-sec">
-                    <h1 class="res-sec-title sec-h" contenteditable="true" v-on:input="onNameChange">{{ resume.name }}</h1>
-                    <p>应聘职位: {{ resume.job_title }}</p>
-                    <p class="per-info">{{ resume.birthday }} | {{ resume.gendor }} | {{ resume.email }} | {{ resume.phone }}</p>
+                    <h1 class="res-sec-title sec-h" ><edit-span v-model="resume.name"></edit-span></h1>
+                    <p>应聘职位:<edit-span v-model="resume.job_title"></edit-span></p>
+                    <p class="per-info"><edit-span v-model="resume.birthday"></edit-span>| <edit-span v-model="resume.gendor"></edit-span> | <edit-span v-model="resume.email"></edit-span> | <edit-span v-model="resume.phone"></edit-span></p>
                 </section>
                 <section class="res-sec">
                     <h2 class="res-sec-title sec-hh">技能</h2>
@@ -114,25 +114,7 @@
     <script src="../vendors/av-min.js"></script>
     <script src="./js/utils/av.js"> </script>
     <script src="../vendors/vue.min.js"> </script>
-    <script>
-        var app=new Vue({
-            el:"#app",
-            data: {
-                resume:{
-                    name:'李彤',
-                    job_title:'前端工程师',
-                    birthday:'1992/01/02',
-                    gendor:'女',
-                    email:'litongthe@163.com',
-                    phone:'13141298942',
-                }
-            },
-            methods:{
-                onNameChange(e){
-                   // this.resume.name=e.target.innerText;
-                },
-            }
-        })
-    </script>
+    <script src="./js/edit-span.js"></script>
+    <script src="./js/app.js"></script>
 </body>
 </html>
