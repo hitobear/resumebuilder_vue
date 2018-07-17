@@ -1,6 +1,8 @@
 let app=new Vue({
     el:"#app",
     data: {
+        loginVisible:false,
+        signUpVisible:false,
         resume:{
             name:'李彤',
             job_title:'前端工程师',
@@ -29,7 +31,7 @@ let app=new Vue({
             //});
         },
         showLogin(){
-
+            this.loginVisible=true;
         }
     }
 })

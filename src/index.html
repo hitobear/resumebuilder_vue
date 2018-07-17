@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Resume editor</title>
     <link href="./css/index.css" rel="stylesheet" />
+    <link href="./css/login.css" rel="stylesheet" /> 
+    <link href="./css/signUp.css" rel="stylesheet" />
 </head>
 <body>
     <div class="resume-homepage" id="app">
@@ -110,6 +112,44 @@
                 </section>
             </div>
         </main>
+        <div v-show="loginVisible" class="login">
+            <form class="loginform">
+                    <h2>登录</h2>
+                    <button @click="loginVisible=false;">关闭</button>
+                    <div class="row">
+                        <label>邮箱</label>
+                        <input type="text">
+                    </div>
+                    <div class="row">
+                            <label>密码</label>
+                            <input type="text">
+                    </div>
+                    <div class="actions">
+                        <button>提交</button>
+                        <a href="#" @click="loginVisible=false;signUpVisible=true;">注册</a>
+                    </div>
+                    
+            </form>
+        </div>
+        <div v-show="signUpVisible" class="signUp">
+                <form class="signUpForm">
+                        <h2>注册</h2>
+                        <button @click="this.signUpVisible=false;">关闭</button>
+                        <div class="row">
+                            <label>邮箱</label>
+                            <input type="text">
+                        </div>
+                        <div class="row">
+                                <label>密码</label>
+                                <input type="text">
+                        </div>
+                        <div class="actions">
+                            <button>提交</button>
+                            <a href="#" @click="loginVisible=true;signUpVisible=false;">登录</a>
+                        </div>
+                        
+                </form>
+        </div>
     </div>
     <script src="../vendors/av-min.js"></script>
     <script src="./js/utils/av.js"> </script>
