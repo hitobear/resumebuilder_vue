@@ -3,6 +3,14 @@ let app=new Vue({
     data: {
         loginVisible:false,
         signUpVisible:false,
+        signUp:{
+            email:'',
+            password:'',
+        },
+        login:{
+            email:'',
+            password:'',
+        },
         resume:{
             name:'李彤',
             job_title:'前端工程师',
@@ -20,18 +28,38 @@ let app=new Vue({
             }else{
                 this.saveResume();
             }
-            //console.log(this.resume);
-            //let User = AV.Object.extend('User');
-            //let user = new User();
-            //user.set('resume',this.resume);
-            //user.save().then(function (user) {
-            //  console.log('objectId is ' + user.id);
-            //}, function (error) {
-            //  console.error(error);
-            //});
+        },
+        saveResume(){
+            let {id}=AV.User.current();
+            let user=AV.Object.createWithoutData('User',id);
+            user.set('resume',this.resume);;
+            user.save();
+            alert('保存成功');
         },
         showLogin(){
             this.loginVisible=true;
+        },
+        onLogin(){
+            console.log(this.login)
+            AV.User.logIn(this.login.email,this.login.password).then(function(user){
+                console.log(user);
+            },function(error){console.log(error)
+                console.log(error.code);
+                if(error.code===211){
+                    alert('邮箱不存在');
+                }else if(error.code===210){
+                    alert('用户名密码不匹配');
+                }
+            })
+        },
+        onSignUp(e){
+            let user = new AV.User();
+            user.setUsername(this.signUp.email);
+            user.setPassword(this.signUp.password);
+            user.setEmail(this.signUp.email);
+            user.signUp().then(function(user){
+                console.log(user);
+            },function(error){})
         }
     }
 })

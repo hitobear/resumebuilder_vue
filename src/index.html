@@ -113,38 +113,38 @@
             </div>
         </main>
         <div v-show="loginVisible" class="login">
-            <form class="loginform">
+            <form class="loginform" @submit.prevent="onLogin">
                     <h2>登录</h2>
                     <button @click="loginVisible=false;">关闭</button>
                     <div class="row">
                         <label>邮箱</label>
-                        <input type="text">
+                        <input type="text" v-model="login.email">
                     </div>
                     <div class="row">
                             <label>密码</label>
-                            <input type="text">
+                            <input type="password" v-model="login.password">
                     </div>
                     <div class="actions">
-                        <button>提交</button>
+                        <button type="submit">提交</button>
                         <a href="#" @click="loginVisible=false;signUpVisible=true;">注册</a>
                     </div>
                     
             </form>
         </div>
         <div v-show="signUpVisible" class="signUp">
-                <form class="signUpForm">
+                <form class="signUpForm" @submit.prevent="onSignUp">
                         <h2>注册</h2>
                         <button @click="this.signUpVisible=false;">关闭</button>
                         <div class="row">
                             <label>邮箱</label>
-                            <input type="text">
+                            <input type="text" v-model="signUp.email">
                         </div>
                         <div class="row">
                                 <label>密码</label>
-                                <input type="text">
+                                <input type="password" v-model="signUp.password">
                         </div>
                         <div class="actions">
-                            <button>提交</button>
+                            <button type="submit">提交</button>
                             <a href="#" @click="loginVisible=true;signUpVisible=false;">登录</a>
                         </div>
                         
