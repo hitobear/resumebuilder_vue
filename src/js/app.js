@@ -1,7 +1,7 @@
 let app=new Vue({
     el:"#app",
     data: {
-        currentUser:{id:undefined,email:''},
+        currentUser:{objectId:undefined,email:''},
         loginVisible:false,
         signUpVisible:false,
         signUp:{
@@ -31,8 +31,8 @@ let app=new Vue({
             }
         },
         saveResume(){
-            let {id}=AV.User.current();
-            let user=AV.Object.createWithoutData('User',id);
+            let {objectId}=AV.User.current().toJSON();
+            let user=AV.Object.createWithoutData('User',objectId);
             user.set('resume',this.resume);;
             user.save();
             alert('保存成功');
@@ -43,8 +43,7 @@ let app=new Vue({
         onLogin(){
             console.log(this.login)
             AV.User.logIn(this.login.email,this.login.password).then((user)=>{
-                this.currentUser.id=user.id;
-                this.currentUser.email=user.attributes.email;
+                this.currentUser=user.toJSON();
                 this.loginVisible=false;
             },function(error){console.log(error)
                 console.log(error.code);
@@ -66,12 +65,15 @@ let app=new Vue({
             user.setPassword(this.signUp.password);
             user.setEmail(this.signUp.email);
             user.signUp().then(function(user){
-            },function(error){})
+                alert("注册成功，请重新登录")
+            },function(error){
+                alert(rawMessage);
+            })
         }
     }
 })
 
 let currentUser=AV.User.current();
 if(currentUser){
-    app.currentUser=currentUser;
+    app.currentUser=currentUser.toJSON();
 }

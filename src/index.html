@@ -10,6 +10,7 @@
     <link href="./css/signUp.css" rel="stylesheet" />
 </head>
 <body>
+   
     <div class="resume-homepage" id="app">
         <aside class="resume-operation-aside">
             <div class="btn-upper">
@@ -21,7 +22,7 @@
                 </ul>           
             </div>
             <div class="btn-down">
-                    <button class="btn" @click="onLogout" v-show="!!currentUser.id">登出</button>
+                    <button class="btn" @click="onLogout" v-show="!!currentUser.objectId">登出</button>
             </div>
             
         </aside>
