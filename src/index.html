@@ -21,7 +21,7 @@
                 </ul>           
             </div>
             <div class="btn-down">
-                    <button class="btn">登出</button>
+                    <button class="btn" @click="onLogout" v-show="!!currentUser.id">登出</button>
             </div>
             
         </aside>
@@ -115,7 +115,7 @@
         <div v-show="loginVisible" class="login">
             <form class="loginform" @submit.prevent="onLogin">
                     <h2>登录</h2>
-                    <button @click="loginVisible=false;">关闭</button>
+                    <button @click="loginVisible=false;" type="button">关闭</button>
                     <div class="row">
                         <label>邮箱</label>
                         <input type="text" v-model="login.email">
@@ -134,7 +134,7 @@
         <div v-show="signUpVisible" class="signUp">
                 <form class="signUpForm" @submit.prevent="onSignUp">
                         <h2>注册</h2>
-                        <button @click="this.signUpVisible=false;">关闭</button>
+                        <button @click="this.signUpVisible=false;" type="button">关闭</button>
                         <div class="row">
                             <label>邮箱</label>
                             <input type="text" v-model="signUp.email">

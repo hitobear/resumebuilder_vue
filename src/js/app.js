@@ -1,6 +1,7 @@
 let app=new Vue({
     el:"#app",
     data: {
+        currentUser:{id:undefined,email:''},
         loginVisible:false,
         signUpVisible:false,
         signUp:{
@@ -41,8 +42,10 @@ let app=new Vue({
         },
         onLogin(){
             console.log(this.login)
-            AV.User.logIn(this.login.email,this.login.password).then(function(user){
-                console.log(user);
+            AV.User.logIn(this.login.email,this.login.password).then((user)=>{
+                this.currentUser.id=user.id;
+                this.currentUser.email=user.attributes.email;
+                this.loginVisible=false;
             },function(error){console.log(error)
                 console.log(error.code);
                 if(error.code===211){
@@ -52,14 +55,23 @@ let app=new Vue({
                 }
             })
         },
+        onLogout(){
+            AV.User.logOut();
+            alert("注销成功");
+            window.location.reload();
+        },
         onSignUp(e){
             let user = new AV.User();
             user.setUsername(this.signUp.email);
             user.setPassword(this.signUp.password);
             user.setEmail(this.signUp.email);
             user.signUp().then(function(user){
-                console.log(user);
             },function(error){})
         }
     }
 })
+
+let currentUser=AV.User.current();
+if(currentUser){
+    app.currentUser=currentUser;
+}
