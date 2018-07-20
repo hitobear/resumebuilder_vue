@@ -34,8 +34,20 @@ let app=new Vue({
             let {objectId}=AV.User.current().toJSON();
             let user=AV.Object.createWithoutData('User',objectId);
             user.set('resume',this.resume);;
-            user.save();
-            alert('保存成功');
+            user.save().then(()=>{
+                alert("保存成功");
+            },()=>{
+                alert("保存失败");
+            });
+        },
+        getResume(){
+            let query=new AV.Query('User');
+            query.get(this.currentUser.objectId).then((user)=>{
+                let resume=user.toJSON().resume;
+                console.log(resume);
+                this.resume=resume;
+                console.log(resume);
+            })
         },
         showLogin(){
             this.loginVisible=true;
@@ -76,4 +88,5 @@ let app=new Vue({
 let currentUser=AV.User.current();
 if(currentUser){
     app.currentUser=currentUser.toJSON();
+    app.getResume();
 }

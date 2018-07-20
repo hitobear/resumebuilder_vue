@@ -24,7 +24,7 @@ Vue.component('edit-span',{
     },  
     watch: {
         'value'(){
-            if (!this.isLocked && !this.innerText) {
+            if (!this.isLocked) {
                 this.innerText = this.value;
             }
         }
