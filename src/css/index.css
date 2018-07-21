@@ -102,7 +102,6 @@
         display:inline-block;
         min-width:70px;
         min-height:20px;
-        margin-top:20px;
     }
     .resume .res-sec .des_item_description{
         margin-top:10px;
@@ -130,3 +129,22 @@
         display:block;
         cursor:pointer;
     }
+    .res-sec.projects .des_item_name{
+        width:150px;
+    }
+    .res-sec.projects .projectlink{
+        width:300px;
+    }
+    .res-sec.projects .keywords{
+        width:300px;
+    }
+
+    .res-sec.projects .proitem-desc{
+        margin-top:10px;
+    }
+    .sec-projects-item{
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+

@@ -15,7 +15,6 @@
     <div class="resume-homepage" id="app">
         <aside class="resume-operation-aside">
             <div class="btn-upper">
-                    {{resume.gendor}}
                 <ul>
                     <li class="btn-item"><button class="btn" @click="onClickSave">保存</button></li>
                     <li class="btn-item"><button class="btn">分享</button></li>
@@ -52,60 +51,25 @@
                         </li>
                     </ul>
                 </section>
-                <section class="res-sec">
+                <section class="res-sec projects">
                     <h2 class="res-sec-title sec-hh">项目经历</h2>
-                    <ol>
-                        <li class="sec-proitem">
-                            <header class="sec-proitem-header">
+                    <ol class="des_list">
+                        <li v-for="project,index in resume.projects" class="sec-projects-item item-desc">
+                            <header class="sec-proitem-header des_title">
                                 <div class="proitem-hlf">
-                                        <h3 class="projectname">我的简历</h3>
-                                        <span class="projectlink">http://</span>
+                                        <span class="des_item_name"><edit-span placeholder="请填写项目名称" v-model="resume.projects[index].name"></edit-span></span>
+                                        <span class="projectlink"><edit-span placeholder="请填写项目地址http://" v-model="resume.projects[index].link"></edit-span></span>
                                 </div>
                                 <div class="proitem-hrg">
-                                        <span class="projectkeywords">CSS3 JQUERY 响应式</span>
+                                        <span class="keywords"><edit-span placeholder="请填写项目关键字" v-model="resume.projects[index].keywords"></edit-span></span>
                                 </div>
                                         
                             </header>
-                            <p class="proitem-desc">我这个项目的做法</p>
+                            <p class="proitem-desc"><edit-span placeholder="请填写项目描述" v-model="resume.projects[index].description"></edit-span></p>
+                            <span class="deletebtn" @click="deleteProject(index)">X</span>
                         </li>
-                        <li class="sec-proitem">
-                            <header class="sec-proitem-header">
-                                    <div class="proitem-hlf">
-                                            <h3 class="projectname">我的简历</h3>
-                                            <span class="projectlink">http://</span>
-                                    </div>
-                                    <div class="proitem-hrg">
-                                            <span class="projectkeywords">CSS3 JQUERY 响应式</span>
-                                    </div>
-                            </header>
-                            <p class="proitem-desc">我这个项目的做法</p>
-                            
-                        </li>
-                        <li class="sec-proitem">
-                            <header class="sec-proitem-header">
-                                    <div class="proitem-hlf">
-                                            <h3 class="projectname">我的简历</h3>
-                                            <span class="projectlink">http://</span>
-                                    </div>
-                                    <div class="proitem-hrg">
-                                            <span class="projectkeywords">CSS3 JQUERY 响应式</span>
-                                    </div>
-                            </header>
-                            <p class="proitem-desc">我这个项目的做法</p>
-                            
-                        </li>
-                        <li class="sec-proitem">
-                            <header class="sec-proitem-header">
-                                    <div class="proitem-hlf">
-                                            <h3 class="projectname">我的简历</h3>
-                                            <span class="projectlink">http://</span>
-                                    </div>
-                                    <div class="proitem-hrg">
-                                            <span class="projectkeywords">CSS3 JQUERY 响应式</span>
-                                    </div>
-                            </header>
-                            <p class="proitem-desc">我这个项目的做法</p>
-                           
+                        <li class="sec-projects-item">
+                                <button @click="addProject">添加项目经历</button>
                         </li>
                     </ol>
                 </section>
@@ -145,8 +109,7 @@
                         <div class="actions">
                             <button type="submit">提交</button>
                             <a href="#" @click="loginVisible=true;signUpVisible=false;">登录</a>
-                        </div>
-                        
+                        </div>       
                 </form>
         </div>
     </div>

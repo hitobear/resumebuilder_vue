@@ -24,6 +24,9 @@ let app=new Vue({
                 {name:'',description:''},
                 {name:'',description:''},
                 {name:'',description:''},
+            ],
+            projects:[
+                {name:'',link:'',keywords:'',description:''}
             ]
         }
     },
@@ -91,6 +94,12 @@ let app=new Vue({
         },
         deleteSkill(index){
             this.resume.skills.splice(index,1);
+        },
+        addProject(){
+            this.resume.projects.push({name:'',link:'',keywords:'',description:''});
+        },
+        deleteProject(index){
+            this.resume.projects.splice(index,1);
         }
 
     }
