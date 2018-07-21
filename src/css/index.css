@@ -93,3 +93,40 @@
     .projectname{
         margin-right: 1em;
     }
+
+    .resume .res-sec .des_title{
+        text-align:center;   
+    }
+    .resume .res-sec .des_title span{
+        transition: all 0.3s;
+        display:inline-block;
+        min-width:70px;
+        min-height:20px;
+        margin-top:20px;
+    }
+    .resume .res-sec .des_item_description{
+        margin-top:10px;
+    }
+    .resume .res-sec .des_title span.birthday,.resume .res-sec .des_title span.gendor,.resume .res-sec .des_title span.phone{
+        width:180px;
+    }
+    .resume .res-sec .des_title span.job_title{
+        width:190px;
+    }
+
+    .resume .res-sec .des_list li{
+        position:relative;
+    }
+    .resume .res-sec .des_list .item-desc .deletebtn{
+        position:absolute;
+        margin-right:5px;
+        margin-top:5px;
+        top:0;
+        right:0;
+        font-size:20px;
+        display:none;
+    }
+    .resume .res-sec .des_list .item-desc:hover .deletebtn{
+        display:block;
+        cursor:pointer;
+    }

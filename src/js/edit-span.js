@@ -4,18 +4,23 @@ Vue.component('edit-span',{
             type:String,
             default:'',
         },
+        placeholder:{
+            type:String,
+            default:'',
+        },
         canEdit:{
             type:Boolean,
             default:true,
         }
     },
-    template:`<span class="edit-span"
+    template:`<div class="edit-div"
         v-html="innerText"
+        :data-placeholder="placeholder"
         :contenteditable="canEdit"
         @focus="isLocked = true"
         @blur="isLocked = false"
         @input="changeText">
-         </span>`,
+         </div>`,
     data(){
         return {
             innerText: this.value,

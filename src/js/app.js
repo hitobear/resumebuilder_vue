@@ -14,11 +14,17 @@ let app=new Vue({
         },
         resume:{
             name:'李彤',
-            job_title:'前端工程师',
-            birthday:'1992/01/02',
-            gendor:'女',
-            email:'litongthe@163.com',
-            phone:'13141298942',
+            job_title:'',
+            birthday:'',
+            gendor:'',
+            email:'',
+            phone:'',
+            skills:[
+                {name:'',description:''},
+                {name:'',description:''},
+                {name:'',description:''},
+                {name:'',description:''},
+            ]
         }
     },
     methods:{
@@ -44,9 +50,7 @@ let app=new Vue({
             let query=new AV.Query('User');
             query.get(this.currentUser.objectId).then((user)=>{
                 let resume=user.toJSON().resume;
-                console.log(resume);
-                this.resume=resume;
-                console.log(resume);
+                Object.assign(this.resume,resume);
             })
         },
         showLogin(){
@@ -81,7 +85,14 @@ let app=new Vue({
             },function(error){
                 alert(rawMessage);
             })
+        },
+        addSkill(){
+            this.resume.skills.push({name:'',description:''});
+        },
+        deleteSkill(index){
+            this.resume.skills.splice(index,1);
         }
+
     }
 })
 

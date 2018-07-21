@@ -8,6 +8,7 @@
     <link href="./css/index.css" rel="stylesheet" />
     <link href="./css/login.css" rel="stylesheet" /> 
     <link href="./css/signUp.css" rel="stylesheet" />
+    <link href="./css/edit-div.css" rel="stylesheet" />
 </head>
 <body>
    
@@ -31,27 +32,23 @@
             <div class="resume">
                 <section class="res-sec">
                     <h1 class="res-sec-title sec-h" ><edit-span v-model="resume.name"></edit-span></h1>
-                    <p>应聘职位:<edit-span v-model="resume.job_title"></edit-span></p>
-                    <p class="per-info"><edit-span v-model="resume.birthday"></edit-span>| <edit-span v-model="resume.gendor"></edit-span> | <edit-span v-model="resume.email"></edit-span> | <edit-span v-model="resume.phone"></edit-span></p>
+                    <div class="des_title">
+                        <p>应聘职位:<span class="job_title"><edit-span placeholder="请填写应聘职位" v-model="resume.job_title"></edit-span></span></p>                 
+                        <span class="birthday"><edit-span placeholder="请填写出生日期" v-model="resume.birthday"></edit-span></span>
+                        <span class="gendor"><edit-span placeholder="请填写性别" v-model="resume.gendor"></edit-span></span>
+                        <span class="phone"><edit-span placeholder="请填写手机号码" v-model="resume.phone"></edit-span></span>
+                    </div>
                 </section>
                 <section class="res-sec">
                     <h2 class="res-sec-title sec-hh">技能</h2>
-                    <ul class="sec-skills-items-wrapper">
-                        <li class="sec-skills-item">
-                            <span class="skilltitle">静态页面制作</span>
-                            <p class="skilldescription">完美实现设计稿</p>
+                    <ul class="sec-skills-items-wrapper des_list">
+                        <li v-for="skill,index in resume.skills" class="sec-skills-item item-desc">
+                            <span class="skilltitle"><edit-span placeholder="请填写技能名称" v-model="resume.skills[index].name"></edit-span></span>
+                            <p class="des_item_description"><edit-span placeholder="请填写技能信息" v-model="resume.skills[index].description"></edit-span></p>
+                            <span class="deletebtn" @click="deleteSkill(index)">X</span>
                         </li>
                         <li class="sec-skills-item">
-                                <span class="skilltitle">静态页面制作</span>
-                                <p class="skilldescription">完美实现设计稿</p>
-                        </li>
-                        <li class="sec-skills-item">
-                            <span class="skilltitle">静态页面制作</span>
-                            <p class="skilldescription">完美实现设计稿</p>
-                        </li>
-                        <li class="sec-skills-item">
-                            <span class="skilltitle">静态页面制作</span>
-                            <p class="skilldescription">完美实现设计稿</p>
+                            <button @click="addSkill">添加技能</button>
                         </li>
                     </ul>
                 </section>
